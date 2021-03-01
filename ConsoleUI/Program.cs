@@ -47,7 +47,7 @@ namespace ConsoleUI
             //}
 
 
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //BrandManager brandManager = new BrandManager(new EfBrandDal());
             //foreach (var item in brandManager.GetAll())
             //{
             //    Console.WriteLine("{0} - {1}",item.Id,item.Name);
@@ -72,7 +72,7 @@ namespace ConsoleUI
             //}
 
 
-            ColorManager colorManager = new ColorManager(new EfColorDal());
+            //ColorManager colorManager = new ColorManager(new EfColorDal());
             //foreach (var item in colorManager.GetAll())
             //{
             //    Console.WriteLine("{0} - {1}", item.Id, item.Name);
@@ -97,9 +97,61 @@ namespace ConsoleUI
             //}
 
 
-            foreach(var item in carManager.GetCarDetail())
+            foreach (var item in carManager.GetCarDetail().Data)
             {
-                Console.WriteLine("{0} --- {1} --- {2} --- {3}",item.CarName,item.BrandName,item.ColorName,item.DailyPrice);
+                Console.WriteLine("{0} --- {1} --- {2} --- {3}", item.CarName, item.BrandName, item.ColorName, item.DailyPrice);
+            }
+
+
+
+
+            //CustomerTest();
+            //UserTest();
+            RentalTest();
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            Customer customer = new Customer { CompanyName = "Asus" };
+            customerManager.Add(customer);
+            customer.CompanyName = "Dell";
+            customerManager.Update(customer);
+            Console.WriteLine(customerManager.GetById(2));
+            customerManager.Delete(customer);
+            foreach (var item in customerManager.GetAll().Data)
+            {
+                Console.WriteLine("{0}\t{1}",item.Id,item.CompanyName);
+            }
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            User user = new User { FirstName = "Elrond", LastName = "Efendi", Email = "elrond@gmail.com", Password = "elrond123" };
+            userManager.Add(user);
+            user.Password = "@yrıkv@di";
+            userManager.Update(user);
+            Console.WriteLine(userManager.GetById(4));
+            userManager.Delete(user);
+            foreach (var item in userManager.GetAll().Data)
+            {
+                Console.WriteLine("{0}\t{1}", item.Id, item.LastName);
+            }
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Rental rental = new Rental { CustomerId = 2, CarId = 5, RentDate = new DateTime(3020, 01, 01), ReturnDate = new DateTime(3021, 01, 01) };
+            rentalManager.Add(rental);
+            rental.ReturnDate=new DateTime(3025,01,01);
+            rentalManager.Update(rental);
+            Console.WriteLine(rentalManager.GetById(2).Data.CarId);
+            rentalManager.Delete(rental);
+            foreach (var item in rentalManager.GetAll().Data)
+            {
+                Console.WriteLine("{0}\t{1}", item.CarId, item.ReturnDate);
             }
         }
     }
