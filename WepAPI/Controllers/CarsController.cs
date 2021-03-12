@@ -47,7 +47,7 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("add")]
+        [HttpPost("add")]
         public IActionResult Add(Car car)
         {
             var result = _carService.Add(car);
