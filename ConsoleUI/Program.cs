@@ -125,20 +125,20 @@ namespace ConsoleUI
             }
         }
 
-        private static void UserTest()
-        {
-            UserManager userManager = new UserManager(new EfUserDal());
-            User user = new User { FirstName = "Elrond", LastName = "Efendi", Email = "elrond@gmail.com", Password = "elrond123" };
-            userManager.Add(user);
-            user.Password = "@yrıkv@di";
-            userManager.Update(user);
-            Console.WriteLine(userManager.GetById(4));
-            userManager.Delete(user);
-            foreach (var item in userManager.GetAll().Data)
-            {
-                Console.WriteLine("{0}\t{1}", item.Id, item.LastName);
-            }
-        }
+        //private static void UserTest()
+        //{
+        //    UserManager userManager = new UserManager(new EfUserDal());
+        //    User user = new User { FirstName = "Elrond", LastName = "Efendi", Email = "elrond@gmail.com", Password = "elrond123" };
+        //    userManager.Add(user);
+        //    user.Password = "@yrıkv@di";
+        //    userManager.Update(user);
+        //    Console.WriteLine(userManager.GetById(4));
+        //    userManager.Delete(user);
+        //    foreach (var item in userManager.GetAll().Data)
+        //    {
+        //        Console.WriteLine("{0}\t{1}", item.Id, item.LastName);
+        //    }
+        //}
 
         private static void RentalTest()
         {

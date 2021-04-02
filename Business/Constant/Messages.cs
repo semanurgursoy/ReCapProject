@@ -6,6 +6,11 @@ namespace Business.Constant
 {
     public class Messages
     {
+        public static string CarAdded = "Araba eklendi";
+        public static string CarDeleted = "Araba silindi";
+        public static string CarUpdated = "Araba güncellendi";
+        public static string CarListed = "Arabalar listelendi";
+
         public static string CarImageLimitExceded="Bir araç için en fazla 5 adet fotoğraf eklenebilir";
         public static string AddedCarImage="Fotoğraf eklendi";
         public static string DeletedCarImage="Fotoğraf silindi";

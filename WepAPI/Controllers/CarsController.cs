@@ -40,6 +40,24 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbybrandid")]
+        public IActionResult GetByBrandId(int id)
+        {
+            var result = _carService.GetCarsByBrandId(id);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbycolorid")]
+        public IActionResult GetByColorId(int id)
+        {
+            var result = _carService.GetCarsByColorId(id);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
+
         [HttpGet("getcardetail")]
         public IActionResult GetCarDetail()
         {
@@ -76,6 +94,13 @@ namespace WepAPI.Controllers
             return BadRequest(result);
         }
 
-
+        [HttpPost("transactiontest")]
+        public IActionResult TransactionTest(Car car)
+        {
+            var result = _carService.TransactionalOperation(car);
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
     }
 }
