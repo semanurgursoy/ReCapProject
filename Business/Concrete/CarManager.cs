@@ -42,7 +42,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarDeleted);
         }
 
-        [SecuredOperation("Moderator")]
+        //[SecuredOperation("Moderator")]
         [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
