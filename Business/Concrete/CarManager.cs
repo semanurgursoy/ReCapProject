@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Linq.Expressions;
 
 namespace Business.Concrete
 {
@@ -67,10 +68,25 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetail()
+        public IDataResult<List<CarDetailDto>> GetAllDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetails());
         }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetails(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.Id==id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetailsByBrandId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetails(c => c.BrandId == id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetailsByColorId(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetails(c => c.ColorId == id));
+        }      
 
         [SecuredOperation("Admin")]
         [CacheRemoveAspect("ICarService.Get")]

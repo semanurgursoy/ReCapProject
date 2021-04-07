@@ -97,10 +97,10 @@ namespace ConsoleUI
             //}
 
 
-            foreach (var item in carManager.GetCarDetail().Data)
-            {
-                Console.WriteLine("{0} --- {1} --- {2} --- {3}", item.CarName, item.BrandName, item.ColorName, item.DailyPrice);
-            }
+            //foreach (var item in carManager.GetCarDetail().Data)
+            //{
+            //    Console.WriteLine("{0} --- {1} --- {2} --- {3}", item.CarName, item.BrandName, item.ColorName, item.DailyPrice);
+            //}
 
 
 
